@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container-fluid mx-auto">
+    <div class="p-4 m-4">
+        <div class="col-5 mx-auto border rounded pt-4">
+            
+            <!--alert create-->
+            <h3 class="alert alert-light border rounded p-4 m-4" role="alert">Create an Account</h3>
+      
+    <form class="p-3 m-3" action="/Signup" method="POST">
+
+        {% csrf_token %}
+
+        <!--error  show -->
+        {% if error %}
+        <div class="alert alert-danger " role="alert">{{ error }}</div>
+        {% endif %}
+        <!--first name--><!-- form-group se next time -->
+        <div class="mb-3">
+            <label class="form-label">First Name</label>
+            <input type="text" name="firstname"  value="{{values.first_name}}" class="form-control form-control-sm" id="First Name">
+        </div>
+        
+        <!--last  name-->
+        <div class="mb-3">
+            <label class="form-label">Last Name</label>
+            <input type="text" name="lastname"  value="{{values.last_name}}" class="form-control form-control-sm" id="Last Name" >
+        </div>
+
+        <!--email create-->
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" name="email"  value="{{values.email}}" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <div id="email" class="form-text"></div>
+        </div>
+        
+        <!--passwards-->
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input type="password" name="passward" class="form-control form-control-sm" id="exampleInputPassword1">
+        </div>
+        
+        <!--confirm passwards-->
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Conform Password</label>
+            <input type="password" name="confirmpassward" class="form-control form-control-sm" id="exampleInputPassword1">
+          </div>
+        
+        <button type="submit" class="btn-sm btn-primary">Create An Account</button>
+    </form>
+    
+         </div>
+    </div>
+</div>
+
+{% endblock %}
